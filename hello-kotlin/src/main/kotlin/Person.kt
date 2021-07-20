@@ -1,18 +1,8 @@
-class Person(val name: String, val age: Int) {
-    override fun toString(): String {
-        return "Person(name: $name, age: $age)"
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return (other is Person && other.name == name)
-    }
-}
+data class Person(val name: String, val age: Int)
 
 fun main(args: Array<String>) {
-    val jamesJones = Person("James", 35)
-    val jamesDavid = Person("James", 35)
-
-    println(jamesJones)
-    println(jamesDavid)
-    println(jamesJones == jamesDavid)
+    val person = Person("John", 34)
+    println(person)
+    val (_, age) = person
+    println(age)
 }
