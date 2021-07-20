@@ -1,8 +1,14 @@
-data class Person(val name: String, val age: Int)
+interface Greeter {
+    fun hello(name: String?): String = "Hello there $name!"
+}
+
+class Person(val name: String, val age: Int): Greeter {
+    override fun hello(name: String?): String {
+        return super.hello(this.name)
+    }
+}
 
 fun main(args: Array<String>) {
     val person = Person("John", 34)
-    println(person)
-    val (_, age) = person
-    println(age)
+    print(person.hello(null));
 }
