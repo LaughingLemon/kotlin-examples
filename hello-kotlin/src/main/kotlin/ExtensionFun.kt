@@ -7,19 +7,20 @@ import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
+import javafx.scene.text.Font
 import javafx.stage.Stage
 import java.util.*
 
 class MyApp : Application() {
     override fun start(primaryStage: Stage) {
         with(primaryStage) {
-            vbox(20) {
+            vbox {
                 paddingAll = 12
-                label("Something, something") {
+                val label = label("Something, something") {
                     style = "-fx-text-fill: green"
                 }
                 button("Oranges").setOnAction {
-                    println("Something!")
+                    label.font++
                 }
             }
             show()
@@ -27,10 +28,18 @@ class MyApp : Application() {
     }
 }
 
-fun EventTarget.vbox(spacing: Number?, fn: VBox.() -> Unit) {
+operator fun Pane.plusAssign(node: Node) {
+    add(node)
+}
+
+operator fun Font.inc() = Font(size + 1)
+
+fun EventTarget.vbox(spacing: Number? = 20, fn: VBox.() -> Unit) {
     val vbox = VBox()
-    if (spacing != null)
+
+    if (spacing != null) {
         vbox.spacing = spacing.toDouble()
+    }
 
     when(this) {
         is Stage -> scene = Scene(vbox)
@@ -47,13 +56,13 @@ var VBox.paddingAll : Int
 
 fun Pane.label(text: String, fn: (Label.() -> Unit)? = null): Label {
     val label = Label(text)
-    add(label)
+    this += label
     fn?.invoke(label)
     return label
 }
 
 fun Pane.button(text: String) = Button(text).apply {
-    this@button.add(this)
+    this@button += this
 }
 
 fun Pane.add(node: Node) : Pane {
