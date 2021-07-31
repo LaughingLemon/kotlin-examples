@@ -1,4 +1,5 @@
 import javafx.application.Application
+import javafx.geometry.Insets
 import javafx.scene.Node
 import javafx.scene.Scene
 import javafx.scene.control.Button
@@ -10,6 +11,7 @@ import javafx.stage.Stage
 class MyApp : Application() {
     override fun start(primaryStage: Stage) {
         val root = VBox().apply {
+            paddingAll = 12
             label("Something, something")
             button("Oranges").setOnAction {
                 println("Something!")
@@ -22,6 +24,12 @@ class MyApp : Application() {
         }
     }
 }
+
+var VBox.paddingAll : Int
+    get() = ((padding.left + padding.right + padding.bottom + padding.top) / 4).toInt()
+    set(value) {
+        padding = Insets(value.toDouble())
+    }
 
 fun Pane.label(text: String) = add(Label(text))
 
