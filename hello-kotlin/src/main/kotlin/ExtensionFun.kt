@@ -22,6 +22,8 @@ class MyApp : Application() {
                 button("Oranges").setOnAction {
                     label.font++
                 }
+                val labels = childrenOfType<Label>()
+                println(labels)
             }
             show()
         }
@@ -33,6 +35,8 @@ operator fun Pane.plusAssign(node: Node) {
 }
 
 operator fun Font.inc() = Font(size + 1)
+
+inline fun <reified T: Node> Pane.childrenOfType() = children.mapNotNull { it as? T }
 
 fun EventTarget.vbox(spacing: Number? = 20, fn: VBox.() -> Unit) {
     val vbox = VBox()
