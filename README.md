@@ -1,2 +1,2 @@
 # kotlin-examples
-Examples from Kotlin Fundamentals course: https://www.packtpub.com/product/kotlin-fundamentals-video/9781788477260
+Examples from various Kotlin-based courses and experiments
