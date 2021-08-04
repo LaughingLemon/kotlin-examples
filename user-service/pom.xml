@@ -79,7 +79,13 @@
 					<compilerPlugins>
 						<plugin>spring</plugin>
 						<plugin>jpa</plugin>
+						<plugin>allopen</plugin>
 					</compilerPlugins>
+					<pluginOptions>
+						<option>allopen:annotation=javax.persistence.Entity</option>
+						<option>allopen:annotation=javax.persistence.Embeddable</option>
+						<option>allopen:annotation=javax.persistence.MappedSuperclass</option>
+					</pluginOptions>
 				</configuration>
 				<dependencies>
 					<dependency>
