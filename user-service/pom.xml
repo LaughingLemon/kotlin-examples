@@ -79,12 +79,12 @@
 					<compilerPlugins>
 						<plugin>spring</plugin>
 						<plugin>jpa</plugin>
-						<plugin>allopen</plugin>
+						<plugin>all-open</plugin>
 					</compilerPlugins>
 					<pluginOptions>
-						<option>allopen:annotation=javax.persistence.Entity</option>
-						<option>allopen:annotation=javax.persistence.Embeddable</option>
-						<option>allopen:annotation=javax.persistence.MappedSuperclass</option>
+						<option>all-open:annotation=javax.persistence.Entity</option>
+						<option>all-open:annotation=javax.persistence.Embeddable</option>
+						<option>all-open:annotation=javax.persistence.MappedSuperclass</option>
 					</pluginOptions>
 				</configuration>
 				<dependencies>
@@ -99,6 +99,11 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
 			</plugin>
 		</plugins>
 	</build>
