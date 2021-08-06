@@ -6,8 +6,10 @@
 
     <section>
         <header class="user-header">
-            <p>Name: {{firstname}} {{lastname}}</p>
+            {{#user}}
+            <p>Name: {{firstName}} {{lastName}}</p>
             <p>email: {{email}}</p>
+            {{/user}}
         </header>
     </section>
 

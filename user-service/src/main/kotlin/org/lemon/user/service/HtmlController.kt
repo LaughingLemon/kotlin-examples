@@ -37,9 +37,7 @@ class HtmlController(private val repository: UserRepository) {
             ?.render()
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
         model["title"] = "User"
-        model["firstname"] = user.firstName
-        model["lastname"] = user.lastName
-        model["email"] = user.email?:"None"
+        model["user"] = user
         return "display"
     }
 
