@@ -1,22 +1,15 @@
 {{> header}}
-
-<h1>{{title}}</h1>
-
-<div class="users">
-    <section>
-        <header class="user-header">
-            <h2><a href="/user/create">Create New User</a></h2>
-        </header>
-    </section>
+<article class="user__article container">
+    <header class="user__header">
+        <p><a class="user__header__link button" href="/user/create">Create New User</a></p>
+    </header>
 
     {{#users}}
-    <section>
-        <header class="user-header">
-            <h2><a href="/user/{{id}}">{{firstName}} {{lastName}}</a></h2>
-        </header>
+    <section class="user__section">
+        <p><a class="user__section__link" href="/user/{{id}}">{{firstName}} {{lastName}}</a></p>
     </section>
     {{/users}}
 
-</div>
+</article>
 
 {{> footer}}

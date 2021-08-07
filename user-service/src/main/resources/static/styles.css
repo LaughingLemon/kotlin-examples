@@ -1,0 +1,75 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #4c5167;
+}
+
+.container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding 0 1.6rem;
+}
+
+.header {
+    background: #20222b;
+    color: white;
+    margin-bottom: 4.8rem;
+    padding: 1.6rem 0;
+}
+
+.header__title {
+    font-size: 3.2rem;
+    margin: 0;
+}
+
+.user__header__link, .user__section__link {
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.user__article {
+}
+
+.user__section {
+    font-size: 2rem;
+    color: white;
+}
+
+.user__section__para {
+}
+
+.user__form {
+    font-size: 3rem;
+}
+
+.user__form__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user__form__text {
+    color: white;
+}
+
+.user__form__input {
+    color: black;
+    border:1px solid #292c57;
+    padding: 1rem;
+}
+
+.user__form__submit {
+    font-size: 2rem;
+}
+
+.button {
+    background-color:#8387c5;
+    border:1px solid #292c57;
+    border-radius:5px;
+    color:#fff;
+    margin-right:10px;
+    padding:10px 10px 10px 10px;
+ }
+

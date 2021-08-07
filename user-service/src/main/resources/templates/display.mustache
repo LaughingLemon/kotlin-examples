@@ -1,18 +1,15 @@
 {{> header}}
 
-<h1>{{title}}</h1>
+<article class="user__article container">
 
-<div class="user">
-
-    <section>
-        <header class="user-header">
-            {{#user}}
-            <p>Name: {{firstName}} {{lastName}}</p>
-            <p>email: {{email}}</p>
-            {{/user}}
-        </header>
+    <section class="user__section">
+        {{#user}}
+        <p class="user__section__para">Name: {{firstName}} {{lastName}}</p>
+        <p class="user__section__para">email: {{email}}</p>
+        {{/user}}
+        <p><a class="user__section__link button" href="/">Back</a></p>
     </section>
 
-</div>
+</article>
 
 {{> footer}}

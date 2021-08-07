@@ -1,16 +1,13 @@
 {{> header}}
+<div class="user container">
 
-<h1>{{title}}</h1>
-
-<div class="user">
-
-    <form action="/user/create" name="user" method="post">
-        <header class="user-header">
-            <p>First Name: <input type="text" name="firstName" /></p>
-            <p>Last Name: <input type="text" name="lastName" /></p>
-            <p>email: <input type="text" name="email" /></p>
-            <input type="submit" value="Create" />
-        </header>
+    <form class="user__form" action="/user/create" name="user" method="post">
+        <table class="user__form__table">
+            <tr class="user__form__para"><td class="user__form__text">First Name:</td><td><input class="user__form__input" type="text" name="firstName" /></td></tr>
+            <tr class="user__form__para"><td class="user__form__text">Last Name:</td><td><input class="user__form__input" type="text" name="lastName" /></td></tr>
+            <tr class="user__form__para"><td class="user__form__text">email:</td><td><input class="user__form__input" type="text" name="email" /></td></tr>
+            <tr><td><input class="user__form__submit button" type="submit" value="Create" /></td></tr>
+        </table>
     </form>
 
 </div>
