@@ -78,4 +78,22 @@ class FluxAndMono {
         //in the buffer, "2", "3", "4", which means "5" is in the overflow
         assertThat(overflow.get()).isEqualTo(5)
     }
+
+    @Test
+    fun `using the zip function on two streams`() {
+        //given
+        //0, 2, 4, 6, 8
+        val evenNums = Flux.range(0, 10).filter { x -> x % 2 == 0 }
+        //1, 3, 5, 7, 9
+        val oddNums = Flux.range(0, 10).filter { x -> x % 2 > 0 }
+        //when
+        //1, 5, 9, 13, 17
+        val intFlux = Flux.zip(evenNums, oddNums, { a, b -> a + b }).log()
+        //then
+        StepVerifier.create(intFlux)
+            .expectNext(1, 5, 9, 13, 17)
+            .expectComplete()
+            .verify()
+    }
+
 }
