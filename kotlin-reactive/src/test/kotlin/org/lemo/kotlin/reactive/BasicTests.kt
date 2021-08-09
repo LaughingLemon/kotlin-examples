@@ -29,4 +29,19 @@ class BasicTests {
     }
 
     private fun action(v: Int?): Supplier<String> = Supplier { v?.toString() ?: "" }
+
+    @Test
+    fun `Use step verifier on Int Range`() {
+        val evenNums = Flux.range(0, 10).filter { x -> x % 2 == 0 }
+        val oddNums = Flux.range(0, 10).filter { x -> x % 2 > 0 }
+
+        val fluxOfInts = Flux.concat(evenNums, oddNums)
+
+        StepVerifier.create(fluxOfInts)
+            .expectNext(0, 2, 4, 6, 8)
+            .expectNext(1, 3, 5, 7, 9)
+            .expectComplete()
+            .verify()
+    }
+
 }
