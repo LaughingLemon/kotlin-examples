@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.test.StepVerifier
+import java.util.concurrent.atomic.AtomicInteger
 
 class FluxAndMono {
 
@@ -56,4 +57,25 @@ class FluxAndMono {
             .verify()
     }
 
+    @Test
+    fun `enploying backpressure`() {
+        //given
+        val overflow = AtomicInteger()
+        val backPressureFlux = Flux.range(1, 100)
+            .hide()
+            .log()
+            .onBackpressureBuffer(3, overflow::set) //buffer three elements, then set the overflow value
+        //when
+        //then
+        StepVerifier.create(backPressureFlux, 0)
+            .expectSubscription()
+            .thenRequest(1)
+            .expectNext(1)
+            .thenAwait()
+            .thenCancel()
+            .verify()
+        //the request consumes the first one "1", leaving three more
+        //in the buffer, "2", "3", "4", which means "5" is in the overflow
+        assertThat(overflow.get()).isEqualTo(5)
+    }
 }
