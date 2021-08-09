@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import reactor.core.publisher.Flux
+import reactor.core.scheduler.Schedulers
 import reactor.test.StepVerifier
 import java.time.Duration
+import java.util.*
 import java.util.function.Supplier
 
 class BasicTests {
@@ -69,4 +71,20 @@ class BasicTests {
             .verify()
 
     }
+
+    @Test
+    fun `use flatMap for concurrent testing`() {
+        val millenials = Flux.range(0, 1000)
+
+        millenials.buffer(10)
+            .log()
+            .flatMap { x ->
+                Flux.fromIterable(x)
+                    .map { ::toThreeValues }
+                    .subscribeOn(Schedulers.parallel())
+                    .log()
+            }.blockLast()
+    }
+
+    private fun toThreeValues(i : Int): List<Int> = intArrayOf(i + 1, i + 2, i + 3).toList()
 }
