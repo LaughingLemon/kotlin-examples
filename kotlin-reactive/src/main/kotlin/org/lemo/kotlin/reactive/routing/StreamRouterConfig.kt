@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono
 open class StreamRouterConfig(@Autowired val repo : DeliveryServiceReactive) {
 
     @Bean
-    fun getOnly() = router {
+    open fun getOnly() = router {
         GET("/stream/delivery/{itemName}") {
             request -> getDelivery(request)
         }

@@ -7,7 +7,6 @@ import org.lemo.kotlin.reactive.model.DeliveryServiceRepository
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import org.springframework.test.web.reactive.server.WebTestClient
-import reactor.core.publisher.Flux
 
 class StreamRouterConfigTest {
     @Test
