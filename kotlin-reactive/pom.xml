@@ -47,6 +47,13 @@
 			<artifactId>kotlinx-coroutines-reactor</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxkotlin -->
+		<dependency>
+			<groupId>io.reactivex.rxjava2</groupId>
+			<artifactId>rxkotlin</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
