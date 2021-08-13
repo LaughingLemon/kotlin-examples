@@ -27,7 +27,7 @@ class FakeDb: Db {
             Single.error { UserNotFound("Record $id is not found") }
 
     override fun addUser(user: User): Completable =
-        Completable.fromAction { userMap.put(user.id, user) }
+        Completable.fromAction { userMap[user.id] = user }
 
 }
 
@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
 
     db.getAllUsers()
         .flatMapSingle { Single.just(it).zipWith(db.getPointsForUserId(it.id), {
-            (_, name), points -> "${name} has $points"
+            (_, name), points -> "$name has $points"
         } ) }
         .subscribe { println(it) }
 }
