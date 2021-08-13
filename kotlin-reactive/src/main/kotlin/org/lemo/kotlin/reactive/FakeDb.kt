@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
 
     db.getAllUsers()
         .flatMapSingle { Single.just(it).zipWith(db.getPointsForUserId(it.id), {
-            user, points -> "${user.name} has $points"
+            (_, name), points -> "${name} has $points"
         } ) }
         .subscribe { println(it) }
 }
