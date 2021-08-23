@@ -6,12 +6,15 @@ import kotlinx.coroutines.rx2.rxFlowable
 fun main(args: Array<String>) {
     rxFlowable {
         listOf("John", "Paul", "Mark", "Andrew", "George", "Ringo")
-            .forEach { send(it) }
+            .forEach {
+                send(it)
+                println("Thread -> $it")
+            }
     }.map {
         it.uppercase()
     }.blockingSubscribeBy(
         onNext = {
-            println(it)
+            println("main -> $it")
         }
     )
 }
