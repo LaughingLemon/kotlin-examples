@@ -11,5 +11,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="org.spekframework.spek2:spek-dsl-jvm:2.0.17" level="project" />
+    <orderEntry type="library" name="org.spekframework.spek2:spek-runner-junit5:2.0.17" level="project" />
+    <orderEntry type="library" name="io.strikt:strikt-core:0.31.0" level="project" />
   </component>
 </module>
