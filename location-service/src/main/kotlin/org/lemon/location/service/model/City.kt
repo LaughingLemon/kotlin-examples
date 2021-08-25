@@ -12,5 +12,7 @@ data class City(
     var id: Long?,
     var name: String?,
     var lat: Double?,
-    var long: Double?
+    var long: Double?,
+    var country: String?,
+    var pop: Int?
 )
