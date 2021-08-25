@@ -29,8 +29,6 @@ class DataSetup {
     }
 
     private fun importCities() {
-        loadObjectList(City::class.java, "cities.csv").forEach {
-            repo.save(it)
-        }
+        repo.saveAll(loadObjectList(City::class.java, "cities.csv"))
     }
 }

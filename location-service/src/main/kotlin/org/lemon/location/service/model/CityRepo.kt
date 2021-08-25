@@ -7,4 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 @RepositoryRestResource(collectionResourceRel = "city", path = "city")
 interface CityRepo: CrudRepository<City, Long> {
     fun findByName(@Param("name") name: String): List<City>
+    fun findByCountry(@Param("country") country: String): List<City>
 }
