@@ -2,6 +2,9 @@ package org.lemon.location.service.model
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy
+import kotlin.math.acos
+import kotlin.math.cos
+import kotlin.math.sin
 
 class CustomCityRepoImpl : CustomCityRepo {
 
@@ -16,10 +19,8 @@ class CustomCityRepoImpl : CustomCityRepo {
             val phi2 = lat2 * Math.PI / 180
             val delta = (long2 - long1) * Math.PI / 180
             val r = 6371.00
-            val dist =
-                Math.acos(Math.sin(phi1) * Math.sin(phi2) +
-                          Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta)) * r
-            return dist
+            return acos(sin(phi1) * sin(phi2) +
+                        cos(phi1) * cos(phi2) * cos(delta)) * r
         }
 
         return cityRepo
