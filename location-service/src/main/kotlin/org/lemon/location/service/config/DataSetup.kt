@@ -24,7 +24,10 @@ class DataSetup {
     private fun <T> loadObjectList(type: Class<T>, fileName: String): List<T> {
         val boot = CsvSchema.emptySchema().withHeader()
         val mapper = CsvMapper()
-        val readValues: MappingIterator<T> = mapper.readerFor(type).with(boot).readValues(ClassPathResource(fileName).file)
+        val readValues: MappingIterator<T> =
+            mapper.readerFor(type)
+                  .with(boot)
+                  .readValues(ClassPathResource(fileName).inputStream)
         return readValues.readAll()
     }
 
